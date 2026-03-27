@@ -1,0 +1,13 @@
+{
+  "$schema": "./registry-schema.json",
+  "version": "1.0.0",
+  "description": "Official Exo Package Registry — curated list of approved packages",
+  "packages": {
+    "bmad": {
+      "repo": "tl-nguyen/exo-pkg-bmad",
+      "description": "BMAD Method — AI-driven agile development framework with 34+ workflows and 12+ agents",
+      "category": "framework",
+      "verified": true
+    }
+  }
+}
