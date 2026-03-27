@@ -19,7 +19,7 @@
           "description": { "type": "string" },
           "category": {
             "type": "string",
-            "enum": ["framework", "tool", "agent", "template"]
+            "enum": ["framework", "tool", "agent", "template", "mcp"]
           },
           "verified": {
             "type": "boolean",
