@@ -8,6 +8,12 @@
       "description": "BMAD Method — AI-driven agile development framework with 34+ workflows and 12+ agents",
       "category": "framework",
       "verified": true
+    },
+    "caveman": {
+      "repo": "tl-nguyen/exo-pkg-caveman",
+      "description": "Caveman — terse-response mode for AI coding agents; strips filler from model output to cut token spend",
+      "category": "tool",
+      "verified": true
     }
   }
 }

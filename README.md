@@ -23,6 +23,7 @@ exo install some-org/their-package
 | Name | Repository | Category | Description |
 |------|-----------|----------|-------------|
 | `bmad` | [tl-nguyen/exo-pkg-bmad](https://github.com/tl-nguyen/exo-pkg-bmad) | Framework | BMAD Method — AI-driven agile development |
+| `caveman` | [tl-nguyen/exo-pkg-caveman](https://github.com/tl-nguyen/exo-pkg-caveman) | Tool | Caveman — terse-response mode that cuts agent output tokens |
 
 ## Adding a Package
 
