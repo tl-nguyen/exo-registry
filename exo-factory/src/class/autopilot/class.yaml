@@ -1,0 +1,15 @@
+name: autopilot
+version: 1
+title: Autopilot
+description: Routes work and keeps crew aligned with charter.
+defaults: { harness: claude, model: null, effort: high }
+pool:
+  guidance: [{ id: role, file: guidance/role.md }]
+  skills: []
+  subagents: []
+  hooks: []
+  settings: []
+profiles:
+  default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
+startup_files: [charter.md]
+names: [Orion]

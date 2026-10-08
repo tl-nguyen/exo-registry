@@ -1,0 +1,15 @@
+name: qa
+version: 1
+title: QA
+description: Verifies delivered work against acceptance criteria.
+defaults: { harness: claude, model: null, effort: medium }
+pool:
+  guidance: [{ id: role, file: guidance/role.md }]
+  skills: []
+  subagents: []
+  hooks: []
+  settings: []
+profiles:
+  default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
+startup_files: [charter.md]
+names: [Delphinus, Dorado, Eridanus, Fornax, Gemini, Grus, Hercules, Horologium, Hydra, Indus, Lacerta, Leo]

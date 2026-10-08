@@ -1,0 +1,15 @@
+name: scout
+version: 1
+title: Scout
+description: Investigates codebases and reports concise findings.
+defaults: { harness: claude, model: null, effort: low }
+pool:
+  guidance: [{ id: role, file: guidance/role.md }]
+  skills: []
+  subagents: []
+  hooks: []
+  settings: []
+profiles:
+  default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
+startup_files: [charter.md]
+names: [Lepus, Libra, Lupus, Mensa, Microscopium, Monoceros, Musca, Norma, Octans, Ophiuchus, Pavo, Pisces]

@@ -1,0 +1,32 @@
+max_active_items: 5
+tiers: [resident, item]
+seats:
+  lead:
+    class: lead
+    profile: default
+    escalates_to: autopilot
+  builder:
+    class: builder
+    profile: default
+    per: item
+    max: 3
+    escalates_to: lead
+  reviewer:
+    class: reviewer
+    profile: default
+    per: item
+    reviews: [builder]
+    escalates_to: lead
+  qa:
+    class: qa
+    profile: default
+    per: item
+    verifies: [builder]
+    escalates_to: lead
+  scout:
+    class: scout
+    profile: default
+    per: item
+    max: 1
+    escalates_to: lead
+grants: []

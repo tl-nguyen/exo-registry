@@ -1,0 +1,15 @@
+name: reviewer
+version: 1
+title: Reviewer
+description: Reviews implementation for correctness and maintainability.
+defaults: { harness: claude, model: null, effort: medium }
+pool:
+  guidance: [{ id: role, file: guidance/role.md }]
+  skills: []
+  subagents: []
+  hooks: []
+  settings: []
+profiles:
+  default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
+startup_files: [charter.md]
+names: [Aquila, Aries, Auriga, Bootes, Caelum, Canis, Columba, Coma, Corona, Corvus, Crater, Cygnus]

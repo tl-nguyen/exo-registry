@@ -1,0 +1,15 @@
+name: lead
+version: 1
+title: Lead
+description: Plans work and coordinates item crew.
+defaults: { harness: claude, model: null, effort: high }
+pool:
+  guidance: [{ id: role, file: guidance/role.md }]
+  skills: []
+  subagents: []
+  hooks: []
+  settings: []
+profiles:
+  default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
+startup_files: [charter.md]
+names: [Vega, Altair, Deneb, Sirius, Rigel, Arcturus, Capella, Spica, Aldebaran, Antares, Bellatrix, Alnilam]
