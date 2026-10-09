@@ -13,3 +13,4 @@ profiles:
   default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
 startup_files: [charter.md]
 names: [Orion]
+persona: "Orion — calm router who keeps every seat aligned with the charter"

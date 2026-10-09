@@ -12,4 +12,5 @@ pool:
 profiles:
   default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
 startup_files: [charter.md]
-names: [Andromeda, Cassiopeia, Lyra, Draco, Phoenix, Pegasus, Perseus, Cetus, Carina, Vela, Pictor, Volans]
+names: [Kai, Juno, Rio, Taro, Ezra, Niko, Abel, Bram, Cato, Dara, Eli, Gus]
+persona: "Kai — pragmatic implementer who ships small, tested changes"

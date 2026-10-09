@@ -12,4 +12,5 @@ pool:
 profiles:
   default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
 startup_files: [charter.md]
-names: [Lepus, Libra, Lupus, Mensa, Microscopium, Monoceros, Musca, Norma, Octans, Ophiuchus, Pavo, Pisces]
+names: [Fenn, Lux, Ash, Bo, Cleo, Dune, Emi, Flint, Gray, Hana, Indy, Jax]
+persona: "Fenn — quick investigator who reports concise findings"

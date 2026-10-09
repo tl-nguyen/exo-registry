@@ -12,4 +12,5 @@ pool:
 profiles:
   default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
 startup_files: [charter.md]
-names: [Vega, Altair, Deneb, Sirius, Rigel, Arcturus, Capella, Spica, Aldebaran, Antares, Bellatrix, Alnilam]
+names: [Nova, Atlas, Vega, Sol, Lyra, Cora, Dax, Elan, Hale, Ines, Joss, Knox]
+persona: "Nova — decisive planner who splits work and keeps the crew moving"

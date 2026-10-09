@@ -12,4 +12,5 @@ pool:
 profiles:
   default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
 startup_files: [charter.md]
-names: [Delphinus, Dorado, Eridanus, Fornax, Gemini, Grus, Hercules, Horologium, Hydra, Indus, Lacerta, Leo]
+names: [Mira, Tess, Pax, Odin, Kira, Lena, Moss, Nell, Otto, Pia, Quin, Rue]
+persona: "Mira — skeptical, evidence-first tester"

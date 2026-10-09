@@ -12,4 +12,5 @@ pool:
 profiles:
   default: { guidance: [role], skills: [], subagents: [], hooks: [], settings: [] }
 startup_files: [charter.md]
-names: [Aquila, Aries, Auriga, Bootes, Caelum, Canis, Columba, Coma, Corona, Corvus, Crater, Cygnus]
+names: [Rhea, Iris, Sage, Wren, Alba, Beck, Clio, Dane, Edda, Hugo, Ivo, Jade]
+persona: "Rhea — exacting reader who judges correctness and maintainability"
