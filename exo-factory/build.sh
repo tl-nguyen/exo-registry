@@ -8,7 +8,7 @@ export LC_ALL TZ
 root=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
 cd "$root"
 
-mkdir -p packages/class packages/crew
+mkdir -p packages/class packages/crew packages/pricing
 
 package() {
   category=$1
@@ -23,6 +23,7 @@ for name in autopilot builder lead qa reviewer scout; do
   package class "$name"
 done
 package crew default-crew
+package pricing api-list
 
 pin() {
   sha256sum "packages/$1/$2-1.tar.gz" | cut -d ' ' -f 1
@@ -36,6 +37,10 @@ code_bearing() {
   for file in $(find "$source" -type f | LC_ALL=C sort); do
     relative=${file#"$source/"}
     name=${relative##*/}
+    # Only the root pricing.yaml of a pricing package is data; the name elsewhere is code.
+    if [ "$1" = pricing ] && [ "$relative" = pricing.yaml ]; then
+      continue
+    fi
     if [ -x "$file" ] || case "/$relative/" in */hooks/*|*/settings/*) true ;; *) false ;; esac; then
       printf '%s\n' true
       return
@@ -66,6 +71,7 @@ qa=$(pin class qa)
 reviewer=$(pin class reviewer)
 scout=$(pin class scout)
 default_crew=$(pin crew default-crew)
+api_list=$(pin pricing api-list)
 autopilot_code=$(code_bearing class autopilot)
 builder_code=$(code_bearing class builder)
 lead_code=$(code_bearing class lead)
@@ -73,7 +79,8 @@ qa_code=$(code_bearing class qa)
 reviewer_code=$(code_bearing class reviewer)
 scout_code=$(code_bearing class scout)
 default_crew_code=$(code_bearing crew default-crew)
+api_list_code=$(code_bearing pricing api-list)
 
 cat > index.json <<EOF
-{"v":1,"packages":{"class/autopilot":{"1":{"path":"exo-factory/packages/class/autopilot-1.tar.gz","sha256":"$autopilot","code_bearing":$autopilot_code}},"class/builder":{"1":{"path":"exo-factory/packages/class/builder-1.tar.gz","sha256":"$builder","code_bearing":$builder_code}},"class/lead":{"1":{"path":"exo-factory/packages/class/lead-1.tar.gz","sha256":"$lead","code_bearing":$lead_code}},"class/qa":{"1":{"path":"exo-factory/packages/class/qa-1.tar.gz","sha256":"$qa","code_bearing":$qa_code}},"class/reviewer":{"1":{"path":"exo-factory/packages/class/reviewer-1.tar.gz","sha256":"$reviewer","code_bearing":$reviewer_code}},"class/scout":{"1":{"path":"exo-factory/packages/class/scout-1.tar.gz","sha256":"$scout","code_bearing":$scout_code}},"crew/default-crew":{"1":{"path":"exo-factory/packages/crew/default-crew-1.tar.gz","sha256":"$default_crew","code_bearing":$default_crew_code}}}}
+{"v":1,"packages":{"class/autopilot":{"1":{"path":"exo-factory/packages/class/autopilot-1.tar.gz","sha256":"$autopilot","code_bearing":$autopilot_code}},"class/builder":{"1":{"path":"exo-factory/packages/class/builder-1.tar.gz","sha256":"$builder","code_bearing":$builder_code}},"class/lead":{"1":{"path":"exo-factory/packages/class/lead-1.tar.gz","sha256":"$lead","code_bearing":$lead_code}},"class/qa":{"1":{"path":"exo-factory/packages/class/qa-1.tar.gz","sha256":"$qa","code_bearing":$qa_code}},"class/reviewer":{"1":{"path":"exo-factory/packages/class/reviewer-1.tar.gz","sha256":"$reviewer","code_bearing":$reviewer_code}},"class/scout":{"1":{"path":"exo-factory/packages/class/scout-1.tar.gz","sha256":"$scout","code_bearing":$scout_code}},"crew/default-crew":{"1":{"path":"exo-factory/packages/crew/default-crew-1.tar.gz","sha256":"$default_crew","code_bearing":$default_crew_code}},"pricing/api-list":{"1":{"path":"exo-factory/packages/pricing/api-list-1.tar.gz","sha256":"$api_list","code_bearing":$api_list_code}}}}
 EOF
