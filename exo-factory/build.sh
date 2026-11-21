@@ -13,7 +13,8 @@ mkdir -p packages/class packages/crew packages/pricing
 package() {
   category=$1
   name=$2
-  output="packages/$category/$name-1.tar.gz"
+  version=${3:-1}
+  output="packages/$category/$name-$version.tar.gz"
 
   tar --sort=name --mtime='@0' --owner=0 --group=0 --numeric-owner \
     -C "src/$category/$name" -cf - . | gzip -n > "$output"
@@ -23,10 +24,10 @@ for name in autopilot builder lead qa reviewer scout; do
   package class "$name"
 done
 package crew default-crew
-package pricing api-list
+package pricing api-list 2
 
 pin() {
-  sha256sum "packages/$1/$2-1.tar.gz" | cut -d ' ' -f 1
+  sha256sum "packages/$1/$2-${3:-1}.tar.gz" | cut -d ' ' -f 1
 }
 
 # Keep index policy aligned with client: only declarative package files are data.
@@ -71,7 +72,8 @@ qa=$(pin class qa)
 reviewer=$(pin class reviewer)
 scout=$(pin class scout)
 default_crew=$(pin crew default-crew)
-api_list=$(pin pricing api-list)
+api_list_1=$(pin pricing api-list)
+api_list=$(pin pricing api-list 2)
 autopilot_code=$(code_bearing class autopilot)
 builder_code=$(code_bearing class builder)
 lead_code=$(code_bearing class lead)
@@ -82,5 +84,5 @@ default_crew_code=$(code_bearing crew default-crew)
 api_list_code=$(code_bearing pricing api-list)
 
 cat > index.json <<EOF
-{"v":1,"packages":{"class/autopilot":{"1":{"path":"exo-factory/packages/class/autopilot-1.tar.gz","sha256":"$autopilot","code_bearing":$autopilot_code}},"class/builder":{"1":{"path":"exo-factory/packages/class/builder-1.tar.gz","sha256":"$builder","code_bearing":$builder_code}},"class/lead":{"1":{"path":"exo-factory/packages/class/lead-1.tar.gz","sha256":"$lead","code_bearing":$lead_code}},"class/qa":{"1":{"path":"exo-factory/packages/class/qa-1.tar.gz","sha256":"$qa","code_bearing":$qa_code}},"class/reviewer":{"1":{"path":"exo-factory/packages/class/reviewer-1.tar.gz","sha256":"$reviewer","code_bearing":$reviewer_code}},"class/scout":{"1":{"path":"exo-factory/packages/class/scout-1.tar.gz","sha256":"$scout","code_bearing":$scout_code}},"crew/default-crew":{"1":{"path":"exo-factory/packages/crew/default-crew-1.tar.gz","sha256":"$default_crew","code_bearing":$default_crew_code}},"pricing/api-list":{"1":{"path":"exo-factory/packages/pricing/api-list-1.tar.gz","sha256":"$api_list","code_bearing":$api_list_code}}}}
+{"v":1,"packages":{"class/autopilot":{"1":{"path":"exo-factory/packages/class/autopilot-1.tar.gz","sha256":"$autopilot","code_bearing":$autopilot_code}},"class/builder":{"1":{"path":"exo-factory/packages/class/builder-1.tar.gz","sha256":"$builder","code_bearing":$builder_code}},"class/lead":{"1":{"path":"exo-factory/packages/class/lead-1.tar.gz","sha256":"$lead","code_bearing":$lead_code}},"class/qa":{"1":{"path":"exo-factory/packages/class/qa-1.tar.gz","sha256":"$qa","code_bearing":$qa_code}},"class/reviewer":{"1":{"path":"exo-factory/packages/class/reviewer-1.tar.gz","sha256":"$reviewer","code_bearing":$reviewer_code}},"class/scout":{"1":{"path":"exo-factory/packages/class/scout-1.tar.gz","sha256":"$scout","code_bearing":$scout_code}},"crew/default-crew":{"1":{"path":"exo-factory/packages/crew/default-crew-1.tar.gz","sha256":"$default_crew","code_bearing":$default_crew_code}},"pricing/api-list":{"1":{"path":"exo-factory/packages/pricing/api-list-1.tar.gz","sha256":"$api_list_1","code_bearing":false},"2":{"path":"exo-factory/packages/pricing/api-list-2.tar.gz","sha256":"$api_list","code_bearing":$api_list_code}}}}
 EOF
